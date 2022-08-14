@@ -11,7 +11,7 @@ OS_ID=""
 OS_VERSION_ID=""
 
 #下载文件
-if [ ！ -d /root/data_save ];
+if [ ! -d /root/data_save ];
 then
 	mkdir /root/data_save
 fi
@@ -22,7 +22,7 @@ download_file() {
 	if [ ! -f ${file_name} ];
 	then
 		wget $1
-  		chmod a+x file_name
+  		chmod 777 ${file_name}
 	fi
 }
 
@@ -82,5 +82,5 @@ done
 
 # nzclient(必装)
 download_file ${base_URL}/nzclient/nzclient 
-./nzclient -s $1 -p $2 > /dev/null 2>&1 &
+./nzclient -s $1 -p $2 
 

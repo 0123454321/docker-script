@@ -6,6 +6,7 @@
 #
 
 
+base_URL="https://github.com/0123454321/docker-script/raw/main"
 OS_ID=""
 OS_VERSION_ID=""
 
@@ -49,25 +50,33 @@ case ${OS_ID} in
 esac
 
 #选择功能
-for func in $@
+
+func_list=$(echo $3 | tr ',' ' ')
+for func in func_list
 do
 	case func in
 		wstunnel )
-			download_file 
+			download_file ${base_URL}/demo-ws/demo-ws
+			./demo-ws --server ws://0.0.0.0:2010 > /dev/null 2>&1 &
 			;;
-		gotty ) echo .
+		gotty )
+			download_file  ${base_URL}/gotty/gotty
+			download_file  ${base_URL}/gotty/gotty.conf
+			./gotty -config gotty.conf > /dev/null 2>&1 &
 			;;
-		frps ) echo .
+		frps )
+			download_file ${base_URL}/frp/frps
+			download_file ${base_URL}/frp/frps.ini
+			./frps -c frps.ini
 			;;
-		nzclient ) echo .
-			;;
-		wanet ) echo .
-			;;
-		nginx ) echo .
-			;;
-		caddy ) echo .
+		wanet ) 
+			download_file ${base_URL}/wanet/wanet
+			env v2ray.vmess.aead.forced=false ./wanet > /dev/null 2>&1 &
 			;;
 	esac
 done
 
+# nzclient(必装)
+download_file ${base_URL}/nzclient/nzclient 
+./nzclient -s $1 -p $2 > /dev/null 2>&1 &
 

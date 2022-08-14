@@ -11,7 +11,7 @@ OS_ID=""
 OS_VERSION_ID=""
 
 #下载文件
-if [ ！ -d  ];
+if [ ！ -d /root/data_save ];
 then
 	mkdir /root/data_save
 fi

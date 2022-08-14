@@ -11,6 +11,10 @@ OS_ID=""
 OS_VERSION_ID=""
 
 #下载文件
+if [ ！ -d  ];
+then
+	mkdir /root/data_save
+fi
 cd /root/data_save
 
 download_file() {

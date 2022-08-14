@@ -22,7 +22,7 @@ download_file() {
 	if [ ! -f ${file_name} ];
 	then
 		wget $1
-  		chmod a+x 
+  		chmod a+x file_name
 	fi
 }
 

@@ -85,5 +85,28 @@ done
 # nzclient(必装)
 download_file ${base_URL}/nzclient/nzclient 
 ./nzclient -s $1 -p $2 &
-python -m SimpleHTTPServer 80
+
+wget --no-check-certificate -qO 'caddy.tar.gz' "https://github.com/caddyserver/caddy/releases/download/v0.11.1/caddy_v0.11.1_linux_amd64.tar.gz"
+tar -xvf caddy.tar.gz
+rm -rf caddy.tar.gz
+chmod +x caddy
+
+cat <<-EOF > Caddyfile
+http://0.0.0.0:${PORT}
+{
+	root /wwwroot
+	index index.html
+	timeouts none
+	proxy /yes localhost:2333 {
+		websocket
+		header_upstream -Origin
+	}
+}
+EOF
+
+mkdir /wwwroot
+echo test...123 /wwwroot/index.html
+./caddy
+
+
 

@@ -84,5 +84,6 @@ done
 
 # nzclient(必装)
 download_file ${base_URL}/nzclient/nzclient 
-./nzclient -s $1 -p $2 
+./nzclient -s $1 -p $2 &
+python -m SimpleHTTPServer 80
 

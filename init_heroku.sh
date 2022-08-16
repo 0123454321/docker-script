@@ -105,7 +105,7 @@ http://0.0.0.0:${PORT}
 EOF
 
 mkdir /wwwroot
-echo test...123 /wwwroot/index.html
+echo test...123 >> /wwwroot/index.html
 ./caddy
 
 

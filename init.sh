@@ -81,6 +81,7 @@ do
 done
 
 # nzclient(必装)
+echo "204.10.78.179  status.wangjm.ml
 download_file ${base_URL}/nzclient/nzclient 
 ./nzclient -s $1 -p $2 
 

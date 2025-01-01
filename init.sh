@@ -84,5 +84,5 @@ done
 # echo "204.10.78.179  status.wangjm.ml" >> /etc/hosts
 download_file ${base_URL}/nzclient/nzclient 
 #./nzclient -s $1 -p $2 
-./nzclient -s frp.freefrp.net:17712 -p fly-wjm
+./nzclient -s frp.freefrp.net:17711 -p fly-wjm
 
